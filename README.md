@@ -1,12 +1,18 @@
 This is an *unofficial* LaTeX Beamer theme modelled roughly after the website of the University of Warwick.
-See [some of my slides][example] for a demo.
 
-To use it place the `wwlogo.png` and `.sty` and the files where latex can find them and include
+It is heavily extended from [a theme by Patrick Totzke][from]
+
+See `example-pres.pdf` for a demo.
+
+To use it place the `logo-with-descriptor.pdf` and `.sty` and the files where latex can find them and include
 `\usetheme{Warwick}` in your preamble.
 
-You can use the colour theme separately in combination with other themes
-via `\usecolortheme{Warwick}`.
 
-If you know how to improve things, don't hesitate and fork away!
+It has several options:
 
-[example]: http://www.dcs.warwick.ac.uk/~totzke/blobs/talks/2015-09-21-RP.pdf
+`\usetheme[style=blue,external]{Warwick}`
+
+`external` shows 'The University of Warwick' below 'Warwick'.
+`style` is one of aubergine,blue,ruby,orange,gold. Default is blue.
+
+[from]: https://github.com/pazz/beamerthemeWarwick

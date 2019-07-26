@@ -2,17 +2,96 @@
 
 % Settings
 \definecolor{wwviolet}{RGB}{180,21,58}   
-\definecolor{wwblue}{RGB}{86,152,210}  
+\definecolor{wwblue}{HTML}{00b2dd}  
+\definecolor{wwsky}{HTML}{204f79}
+\definecolor{wwgrey}{HTML}{3f4246}
+\definecolor{wwaubergine}{HTML}{5b3069}
 
-%\setbeamercolor*{title page header}{fg=wwviolet, bg=black!3}
-%\setbeamercolor*{title}{fg=wwviolet, bg=black!3}
-\setbeamercolor*{title}{fg=white}
-%\setbeamercolor*{date}{fg=white}
-\setbeamercolor*{date}{fg=white}
+\definecolor{wwruby}{HTML}{89102c}
+\definecolor{wwbrubyred}{HTML}{ef4050}
+
+\definecolor{wworange}{HTML}{f47920}
+\definecolor{wwborange}{HTML}{f26322}
+
+
+\definecolor{wwgold}{HTML}{ffc233}
+\definecolor{wwbgold}{HTML}{c8a019}
+
+\DeclareOptionBeamer{style}{\def\beamer@mytheme@style{#1}}
+\ExecuteOptionsBeamer{style=blue} % blue will be default if nothing is given
+\ProcessOptionsBeamer
+
+\def\beamer@mytheme@styleaubergine{aubergine}%
+\def\beamer@mytheme@styleblue{blue}%
+\def\beamer@mytheme@styleruby{ruby}%
+\def\beamer@mytheme@styleorange{orange}%
+
+\def\beamer@mytheme@stylegold{gold}%
+
+\ifx\beamer@mytheme@style\beamer@mytheme@styleaubergine%
+      \colorlet{wwmaincolour}{wwaubergine}
+      \colorlet{wwsurroundcolour}{wwaubergine}
+      \colorlet{wwcontrastcolor}{white}
+\else% 
+    \ifx\beamer@mytheme@style\beamer@mytheme@styleruby%
+      \colorlet{wwmaincolour}{wwruby}
+      \colorlet{wwsurroundcolour}{wwbrubyred}
+      \colorlet{wwcontrastcolor}{white}
+    \else% 
+	    \ifx\beamer@mytheme@style\beamer@mytheme@styleorange%
+	      \colorlet{wwmaincolour}{wwborange}
+	      \colorlet{wwsurroundcolour}{wworange}
+	      \colorlet{wwcontrastcolor}{white}
+	    \else% 
+		    \ifx\beamer@mytheme@style\beamer@mytheme@stylegold%
+		      \colorlet{wwmaincolour}{wwbgold}
+		      \colorlet{wwsurroundcolour}{wwbgold}
+		      \colorlet{wwcontrastcolor}{white}
+		    \else% blue
+		      \colorlet{wwmaincolour}{wwsky}
+		      \colorlet{wwsurroundcolour}{wwblue}
+		      \colorlet{wwcontrastcolor}{wwsky}
+		    \fi%
+	    \fi%
+    \fi%
+\fi%
+% \definecolor{wwmaincolour}{HTML}{204f79}
+% \definecolor{wwsurroundcolour}{HTML}{00b2dd}
+
+%\setbeamercolor*{title page header}{fg=wwviolet, bg=wwgrey!3}
+%\setbeamercolor*{title}{fg=wwviolet, bg=wwgrey!3}
+\setbeamercolor*{title}{fg=wwgrey}
+%\setbeamercolor*{date}{fg=wwgrey}
+\setbeamercolor*{date}{fg=wwgrey}
 \setbeamercolor*{page header}{fg=blue}
-%\setbeamercolor*{author}{fg=wwviolet, bg=black!3}
-\setbeamercolor*{author}{fg=white}
-%\setbeamercolor*{date}{fg=wwviolet}
+%\setbeamercolor*{author}{fg=wwviolet, bg=wwgrey!3}
+\setbeamercolor*{author}{fg=wwgrey}
+\setbeamercolor*{institute}{fg=wwgrey}
+
+\setbeamercolor*{frametitle}{fg=wwmaincolour}
+
+
+\setbeamercolor{palette primary}{fg=wwgrey}
+\setbeamercolor{palette secondary}{fg=wwgrey}
+\setbeamercolor{palette tertiary}{fg=wwgrey}
+\setbeamercolor{palette quaternary}{fg=wwgrey}
+\setbeamercolor{normal text}{fg=wwgrey}
+
+\setbeamercolor{block title example}{use=structure,fg=white,bg=wwmaincolour}
+\setbeamercolor{block body example}{use=structure,bg=wwmaincolour!10,fg=wwgrey}
+
+\setbeamercolor{block title definition}{use=structure,fg=white,bg=wwmaincolour}
+\setbeamercolor{block body definition}{use=structure,bg=wwmaincolour!10,fg=wwgrey}
+
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=wwmaincolour}
+\setbeamercolor{block body}{use=structure,bg=wwmaincolour!10,fg=wwgrey}
+
+
+\setbeamercolor{section in head/foot}{bg=wwblue!80,fg=wwmaincolour}
+\setbeamercolor{author in head/foot}{bg=wwsurroundcolour,fg=wwcontrastcolor}
+\setbeamercolor{date in head/foot}{bg=wwsurroundcolour!60,fg=wwcontrastcolor}
+\setbeamercolor{title in head/foot}{bg=wwsurroundcolour!80,fg=wwcontrastcolor}
 
 \mode
 <all>

@@ -1,5 +1,15 @@
-\mode<presentation>
 
+\mode<presentation>
+% \useoutertheme{infolines}
+\setbeamersize{text margin left=1cm,text margin right=1cm}
+
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
+
+  
 % Frame title
 \defbeamertemplate*{frametitle}{Warwick}[1][]
 {
@@ -7,23 +17,35 @@
   \begin{beamercolorbox}[wd=\paperwidth,ht=1.5cm]{frametitle} 
   \begin{tikzpicture}
   \useasboundingbox[fill=white](0,-0.5) rectangle(\the\paperwidth,\the\paperheight);
-  \fill [wwblue]
-      (0,\the\paperheight) -- 
-      (\the\paperwidth,\the\paperheight) -- 
-      (\the\paperwidth,0.7) -- 
-      (2.0,0.7) --
-      (1.6,0) --
-      (1.3,0.6) --
-      (1,0.0) --
-      (0.6,0.7) --
-      (0,0.7) --
-      cycle;
+   \node (A) at (\the\paperwidth,\the\paperheight){};
+  \gettikzxy{(A)}{\ax}{\ay}
+
+
+      \if@doExternal{
+         \fill [wwsurroundcolour]
+            (0,\the\paperheight) -- 
+            (\the\paperwidth,\the\paperheight) -- 
+            (\the\paperwidth,0.7cm-0.099\paperwidth) -- 
+            (0,0.7cm-0.099\paperwidth) --
+            cycle;}
+      \else{
+         \fill [wwsurroundcolour]
+             (0,\the\paperheight) -- 
+            (\the\paperwidth,\the\paperheight) -- 
+            (\the\paperwidth,0.7cm-0.075\paperwidth) -- 
+            (0,0.7cm-0.075\paperwidth) --
+            cycle;}
+      \fi
+      \node[anchor=north west,inner sep=0pt] (logoleft) at (-0.01,0.7)[]{
+          \includegraphics[width=1.001\paperwidth]{logo-with-descriptor}};
+
+        % \node[fill] (A) at (\ax-2.5cm+1.3cm,0){};
    
    \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west, font=\Large] at (2.5,0){\insertframetitle};}
+      {\node[anchor=west, font=\Large] at (0.75,0){\insertframetitle};}
       \else%
-      {\node[anchor= west, font=\large] at (2.5,0.2){\insertframetitle};%
-       \node[anchor= west, font=\small] at (3,0.1){\insertframesubtitle};}%
+      {\node[anchor= west, font=\large] at (0.75,0.2){\insertframetitle};%
+       \node[anchor= west, font=\small] at (1.5,-0.2){\insertframesubtitle};}%
       \fi
   \end{tikzpicture}
   \end{beamercolorbox}
@@ -33,36 +55,58 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  \fill[color=wwviolet] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-  %\fill[color=orange] (0,0) rectangle(2.95,1.9);
+  % \fill[color=wwviolet] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+  % \fill[color=orange] (0,0) rectangle(2.95,1.9);
   %\fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
   \ifnum\thepage>1\relax%
 \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}}%
-   \fill[wwblue!0] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \fill[wwsurroundcolour!0] (0,0) rectangle(\the\paperwidth,\the\paperheight);
    \fi
   \end{tikzpicture}
 }
 
-% Title page
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% % Title page
 \defbeamertemplate*{title page}{Warwick}[1][]
 { 
+
   \begin{beamercolorbox}[wd=\paperwidth,ht=1.8cm]{frametitle} 
   \begin{tikzpicture}
   \useasboundingbox[fill=white](0,-1) rectangle(\the\paperwidth,\the\paperheight);
-  \fill [wwviolet]
-      (0,\the\paperheight) -- 
-      (\the\paperwidth,\the\paperheight) -- 
-      (\the\paperwidth,0.7) -- 
-      (2.0,0.7) --
-      (1.6,0) --
-      (1.3,0.6) --
-      (1,0.0) --
-      (0.6,0.7) --
-      (0,0.7) --
-      cycle;
-   
-      \node (logoleft) at (1.35,-0.5)[]{
-          \includegraphics[width=2.5cm]{wwlogo.png}};
+  \node (A) at (\the\paperwidth,\the\paperheight){};
+  \gettikzxy{(A)}{\ax}{\ay}
+
+
+      \if@doExternal{
+         \fill [wwsurroundcolour]
+            (0,\the\paperheight) -- 
+            (\the\paperwidth,\the\paperheight) -- 
+            (\the\paperwidth,0.7cm-0.099\paperwidth) -- 
+            (0,0.7cm-0.099\paperwidth) --
+            cycle;}
+      \else{
+         \fill [wwsurroundcolour]
+             (0,\the\paperheight) -- 
+            (\the\paperwidth,\the\paperheight) -- 
+            (\the\paperwidth,0.7cm-0.075\paperwidth) -- 
+            (0,0.7cm-0.075\paperwidth) --
+            cycle;}
+      \fi
+      \node[anchor=north west,inner sep=0pt] (logoleft) at (-0.01,0.7)[]{
+          \includegraphics[width=1.001\paperwidth]{logo-with-descriptor}};
       %\node (logoright) at (12.8cm,0.6)[anchor=north east]{
       %    \includegraphics[height=1.5cm]{pictures/labri.jpg}};
 
@@ -75,15 +119,18 @@
   \end{tikzpicture}
   \end{beamercolorbox}
 %%%%%%%%%%%%%%%%%%%%%
-  \vspace{1cm}
     \begin{beamercolorbox}[sep=8pt,center,#1]{title}
       \usebeamerfont{title}\inserttitle\par%
     \end{beamercolorbox}%
-    \vskip0.75cm%
+    \vskip0.6cm%
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
       \usebeamerfont{author}\insertauthor%
     \end{beamercolorbox}
-     \vskip0.2cm%
+     \vskip0.05cm%
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertinstitute%
+    \end{beamercolorbox}
+     \vskip0.05cm%
     \begin{beamercolorbox}[center,#1]{date}
       \usebeamerfont{author}\insertdate%
     \end{beamercolorbox}

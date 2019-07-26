@@ -3,12 +3,27 @@
 % Requirement
 \RequirePackage{tikz}
 
+
+\newif\if@doExternal
+\@doExternalfalse
+
 % Settings
-%\useinnertheme{Warwick}
+\DeclareOptionBeamer{style}{
+    \PassOptionsToPackage{style=#1}{beamercolorthemeWarwick}
+}
+\ExecuteOptionsBeamer{style=blue}
+\DeclareOptionBeamer{external}{\@doExternaltrue}
+\ProcessOptionsBeamer
+
+
+
+
+
+
+\useinnertheme{rounded}
 \useoutertheme{Warwick}
 \usecolortheme{Warwick}
 
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{blocks}[rounded][shadow=true]  
 
 \mode<all>
