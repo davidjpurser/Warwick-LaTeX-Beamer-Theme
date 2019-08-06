@@ -12,7 +12,8 @@ It has several options:
 
 `\usetheme[style=blue,external]{Warwick}`
 
-`external` shows 'The University of Warwick' below 'Warwick'.
-`style` is one of aubergine,blue,ruby,orange,gold. Default is blue.
+* `externalfront` shows 'The University of Warwick' below 'Warwick' only on the title page.
+* `external` shows 'The University of Warwick' below 'Warwick'. (Using both behaves as `external`).
+* `style` is one of `aubergine,blue,ruby,orange,gold`. Default is blue.
 
 [from]: https://github.com/pazz/beamerthemeWarwick

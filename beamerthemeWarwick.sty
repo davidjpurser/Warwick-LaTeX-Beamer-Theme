@@ -6,13 +6,16 @@
 
 \newif\if@doExternal
 \@doExternalfalse
+\newif\if@doExternalFront
+\@doExternalFrontfalse
 
 % Settings
 \DeclareOptionBeamer{style}{
     \PassOptionsToPackage{style=#1}{beamercolorthemeWarwick}
 }
 \ExecuteOptionsBeamer{style=blue}
-\DeclareOptionBeamer{external}{\@doExternaltrue}
+\DeclareOptionBeamer{externalfront}{\@doExternalFronttrue}
+\DeclareOptionBeamer{external}{\@doExternaltrue\@doExternalFronttrue}
 \ProcessOptionsBeamer
 
 
