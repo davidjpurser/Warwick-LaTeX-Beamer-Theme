@@ -1,7 +1,25 @@
 
 \mode<presentation>
-% \useoutertheme{infolines}
 \setbeamersize{text margin left=1cm,text margin right=1cm}
+
+\newcommand{\warwicklogo}{
+  \begin{minipage}[t]{2.5cm}
+
+\resizebox{2.5cm}{!}{
+\begin{tikzpicture}
+    \fill[wwmaincolour]
+            (0.03,0.99cm) -- 
+            (1.49cm,0.99cm) -- 
+            (1.49cm,0.03) -- 
+            (0.03,0.03) --
+            cycle;
+
+      \node[anchor=south west,inner sep=0pt] (logoleft) at (0,0)[]{
+          \includegraphics[width=1.5cm]{logo-with-descriptor-square}};
+  \end{tikzpicture}
+}
+\end{minipage}
+}
 
 \newcommand{\gettikzxy}[3]{%
   \tikz@scan@one@point\pgfutil@firstofone#1\relax
@@ -55,9 +73,6 @@
 \setbeamertemplate{background}{
   \begin{tikzpicture}
   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  % \fill[color=wwviolet] (0,0) rectangle (\the\paperwidth,\the\paperheight);
-  % \fill[color=orange] (0,0) rectangle(2.95,1.9);
-  %\fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
   \ifnum\thepage>1\relax%
 \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}}%
    \fill[wwsurroundcolour!0] (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -107,15 +122,7 @@
       \fi
       \node[anchor=north west,inner sep=0pt] (logoleft) at (-0.01,0.7)[]{
           \includegraphics[width=1.001\paperwidth]{logo-with-descriptor}};
-      %\node (logoright) at (12.8cm,0.6)[anchor=north east]{
-      %    \includegraphics[height=1.5cm]{pictures/labri.jpg}};
-
-%   \ifx\insertframesubtitle\@empty%
-%      {\node[anchor=west, font=\Large] at (2.5,0){\insertframetitle};}
-%      \else%
-%      {\node[anchor= west, font=\large] at (2.5,0.2){\insertframetitle};%
-%       \node[anchor= west, font=\small] at (3,0.1){\insertframesubtitle};}%
-%      \fi
+    
   \end{tikzpicture}
   \end{beamercolorbox}
 %%%%%%%%%%%%%%%%%%%%%
@@ -125,10 +132,6 @@
     \vskip0.6cm%
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
       \usebeamerfont{author}\insertauthor%
-    \end{beamercolorbox}
-     \vskip0.05cm%
-    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
-      \usebeamerfont{author}\insertinstitute%
     \end{beamercolorbox}
      \vskip0.05cm%
     \begin{beamercolorbox}[center,#1]{date}

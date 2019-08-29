@@ -1,28 +1,40 @@
 \documentclass[aspectratio=169]{beamer}
 
  
-\usetheme[style=aubergine]{Warwick}
-% \usetheme[]{Madrid}
+\usetheme[style=aubergine,externalfront]{Warwick}
 \usepackage[UKenglish]{isodate}
 \usepackage{listings} 
 
+\usepackage{draftfigure}
 
-%Information to be included in the title page:
-\title{An Example Presentation}
-\author[Sirius Black]{Sirius Black\\ University of Warwick\\[0.5cm] Joint work with: Neville Longbottom, Hogwarts and Hermiony Granger, Ministry of Magic}
-\institute[Warwick]{}
-\date{1st May 2019}
- 
- 
+\usepackage[export]{adjustbox}
+\usepackage{array}
+
 \begin{document}
+
+\newcommand{\makeauthors}{\begin{minipage}{\textwidth}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}m{3.3cm}>{\centering\arraybackslash}m{3.3cm}>{\centering\arraybackslash}m{3.3cm}}
+
+\warwicklogo
+&
+\centering\includegraphics[max height=1.5cm, max width = 2.5cm,draft=false]{example-image-b} &
+\warwicklogo \\
+  Ron Weasley &  Harry Potter &  Hermiony Granger 
+\end{tabular}
+\end{minipage}}
+
+
+ \title{An Example Presentation}
+\author[Ron Weasley]{\makeauthors}
+\institute[Warwick]{}
+ 
+\date{1st May 2019}
  
 
 
 \begin{frame}
 \maketitle
-
-\centering
-Muggle Orientation Evening
 
 \end{frame}
 
