@@ -50,7 +50,8 @@
 		    \else% blue
 		      \colorlet{wwmaincolour}{wwsky}
 		      \colorlet{wwsurroundcolour}{wwblue}
-		      \colorlet{wwcontrastcolor}{wwsky}
+		      \colorlet{wwcontrastcolor}{white}
+		      % \colorlet{wwcontrastcolor}{wwsky}
 		    \fi%
 	    \fi%
     \fi%
@@ -90,8 +91,12 @@
 
 \setbeamercolor{section in head/foot}{bg=wwblue!80,fg=wwmaincolour}
 \setbeamercolor{author in head/foot}{bg=wwsurroundcolour,fg=wwcontrastcolor}
-\setbeamercolor{date in head/foot}{bg=wwsurroundcolour!60,fg=wwcontrastcolor}
-\setbeamercolor{title in head/foot}{bg=wwsurroundcolour!80,fg=wwcontrastcolor}
+\setbeamercolor{date in head/foot}{bg=wwsurroundcolour!70,fg=wwcontrastcolor}
+\setbeamercolor{title in head/foot}{bg=wwsurroundcolour!90,fg=wwcontrastcolor}
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
 
 \setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths\color{wwmaincolour}{$\blacktriangleright$}}}
 \setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths\color{wwmaincolour}{$\blacktriangleright$}}}

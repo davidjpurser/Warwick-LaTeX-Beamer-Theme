@@ -16,4 +16,7 @@ It has several options:
 * `external` shows 'The University of Warwick' below 'Warwick'. (Using both behaves as `external`).
 * `style` is one of `aubergine,blue,ruby,orange,gold`. Default is blue.
 
+
+The command `\warwicklogo` provides the Warwick logo (with The University of Warwick) in the colour of the theme. Useful for the front page.
+
 [from]: https://github.com/pazz/beamerthemeWarwick
