@@ -2,10 +2,10 @@
 \mode<presentation>
 \setbeamersize{text margin left=1cm,text margin right=1cm}
 
-\newcommand{\warwicklogo}{
-  \begin{minipage}[t]{2.5cm}
+\newcommand{\warwicklogo}[1]{
+  \begin{minipage}[t]{#1}
 
-\resizebox{2.5cm}{!}{
+\resizebox{#1}{!}{
 \begin{tikzpicture}
     \fill[wwmaincolour]
             (0.03,0.99cm) -- 
@@ -38,31 +38,42 @@
    \node (A) at (\the\paperwidth,\the\paperheight){};
   \gettikzxy{(A)}{\ax}{\ay}
 
-
-      \if@doExternal{
-         \fill [wwsurroundcolour]
-            (0,\the\paperheight) -- 
-            (\the\paperwidth,\the\paperheight) -- 
-            (\the\paperwidth,0.7cm-0.099\paperwidth) -- 
-            (0,0.7cm-0.099\paperwidth) --
-            cycle;}
+      \if@doWarwickMain{
+        \if@doExternal{
+           \fill [wwsurroundcolour]
+              (0,\the\paperheight) -- 
+              (\the\paperwidth,\the\paperheight) -- 
+              (\the\paperwidth,0.7cm-0.099\paperwidth) -- 
+              (0,0.7cm-0.099\paperwidth) --
+              cycle;}
+        \else{
+           \fill [wwsurroundcolour]
+               (0,\the\paperheight) -- 
+              (\the\paperwidth,\the\paperheight) -- 
+              (\the\paperwidth,0.7cm-0.075\paperwidth) -- 
+              (0,0.7cm-0.075\paperwidth) --
+              cycle;}
+        \fi
+      }
       \else{
-         \fill [wwsurroundcolour]
-             (0,\the\paperheight) -- 
-            (\the\paperwidth,\the\paperheight) -- 
-            (\the\paperwidth,0.7cm-0.075\paperwidth) -- 
-            (0,0.7cm-0.075\paperwidth) --
-            cycle;}
+        \fill [wwsurroundcolour]
+               (0,\the\paperheight) -- 
+              (\the\paperwidth,\the\paperheight) -- 
+              (\the\paperwidth,0.7cm-0\paperwidth) -- 
+              (0,0.7cm-0\paperwidth) --
+              cycle;
+      }
       \fi
+
       \node[anchor=north west,inner sep=0pt] (logoleft) at (-0.01,0.7)[]{
           \includegraphics[width=1.001\paperwidth]{logo-with-descriptor}};
 
         % \node[fill] (A) at (\ax-2.5cm+1.3cm,0){};
    
    \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west, font=\Large] at (0.75,0){\insertframetitle};}
+      {\node[anchor=west, font=\Large] at (15pt,0){\insertframetitle};}
       \else%
-      {\node[anchor= west, font=\large] at (0.75,0.2){\insertframetitle};%
+      {\node[anchor= west, font=\large] at (15pt,0.2){\insertframetitle};%
        \node[anchor= west, font=\small] at (1.5,-0.2){\insertframesubtitle};}%
       \fi
   \end{tikzpicture}
@@ -104,7 +115,8 @@
   \node (A) at (\the\paperwidth,\the\paperheight){};
   \gettikzxy{(A)}{\ax}{\ay}
 
-
+  \if@doWarwickFront{
+      
       \if@doExternalFront{
          \fill [wwsurroundcolour]
             (0,\the\paperheight) -- 
@@ -120,6 +132,18 @@
             (0,0.7cm-0.075\paperwidth) --
             cycle;}
       \fi
+    }
+    \else{
+        \fill [wwsurroundcolour]
+               (0,\the\paperheight) -- 
+              (\the\paperwidth,\the\paperheight) -- 
+              (\the\paperwidth,0.7cm-0\paperwidth) -- 
+              (0,0.7cm-0\paperwidth) --
+              cycle;
+    }
+    \fi
+
+
       \node[anchor=north west,inner sep=0pt] (logoleft) at (-0.01,0.7)[]{
           \includegraphics[width=1.001\paperwidth]{logo-with-descriptor}};
     
@@ -129,11 +153,11 @@
     \begin{beamercolorbox}[sep=8pt,center,#1]{title}
       \usebeamerfont{title}\inserttitle\par%
     \end{beamercolorbox}%
-    \vskip0.6cm%
+    % \vskip0.05cm%
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
       \usebeamerfont{author}\insertauthor%
     \end{beamercolorbox}
-     \vskip0.05cm%
+     % \vskip0.05cm%
     \begin{beamercolorbox}[center,#1]{date}
       \usebeamerfont{author}\insertdate%
     \end{beamercolorbox}

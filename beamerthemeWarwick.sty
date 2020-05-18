@@ -2,12 +2,17 @@
 
 % Requirement
 \RequirePackage{tikz}
-\RequirePackage{xcolor}
+
 
 \newif\if@doExternal
 \@doExternalfalse
 \newif\if@doExternalFront
 \@doExternalFrontfalse
+\newif\if@doWarwickMain
+\@doWarwickMaintrue
+\newif\if@doWarwickFront
+\@doWarwickFronttrue
+
 
 % Settings
 \DeclareOptionBeamer{style}{
@@ -16,6 +21,9 @@
 \ExecuteOptionsBeamer{style=blue}
 \DeclareOptionBeamer{externalfront}{\@doExternalFronttrue}
 \DeclareOptionBeamer{external}{\@doExternaltrue\@doExternalFronttrue}
+\DeclareOptionBeamer{nowarwickmain}{\@doWarwickMainfalse}
+\DeclareOptionBeamer{supresswarwick}{\@doWarwickMainfalse\@doWarwickFrontfalse}
+
 \ProcessOptionsBeamer
 
 
