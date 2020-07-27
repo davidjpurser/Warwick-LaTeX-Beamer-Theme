@@ -3,6 +3,7 @@
 % Settings
 \definecolor{wwviolet}{RGB}{180,21,58}   
 \definecolor{wwblue}{HTML}{00b2dd}  
+ \definecolor{mpiblue}{HTML}{5397CC}
 \definecolor{wwsky}{HTML}{204f79}
 \definecolor{wwgrey}{HTML}{3f4246}
 \definecolor{wwaubergine}{HTML}{5b3069}
@@ -25,7 +26,7 @@
 \def\beamer@mytheme@styleblue{blue}%
 \def\beamer@mytheme@styleruby{ruby}%
 \def\beamer@mytheme@styleorange{orange}%
-
+\def\beamer@mytheme@stylempi{mpi}%
 \def\beamer@mytheme@stylegold{gold}%
 
 \ifx\beamer@mytheme@style\beamer@mytheme@styleaubergine%
@@ -48,10 +49,16 @@
 		      \colorlet{wwsurroundcolour}{wwbgold}
 		      \colorlet{wwcontrastcolor}{white}
 		    \else% blue
-		      \colorlet{wwmaincolour}{wwsky}
-		      \colorlet{wwsurroundcolour}{wwblue}
-		      \colorlet{wwcontrastcolor}{white}
-		      % \colorlet{wwcontrastcolor}{wwsky}
+			    \ifx\beamer@mytheme@style\beamer@mytheme@stylempi%
+			      \colorlet{wwmaincolour}{wwsky}
+			      \colorlet{wwsurroundcolour}{mpiblue}
+			      \colorlet{wwcontrastcolor}{white}
+			    \else% blue
+			      \colorlet{wwmaincolour}{wwsky}
+			      \colorlet{wwsurroundcolour}{wwblue}
+			      \colorlet{wwcontrastcolor}{white}
+			      % \colorlet{wwcontrastcolor}{wwsky}
+			    \fi%
 		    \fi%
 	    \fi%
     \fi%
@@ -95,8 +102,8 @@
 \setbeamercolor{title in head/foot}{bg=wwsurroundcolour!90,fg=wwcontrastcolor}
 
 \setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
-\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
 \setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\color{wwmaincolour}{$\blacktriangleright$}}}
-
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize} 
 \mode
 <all>
